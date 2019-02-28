@@ -1,0 +1,340 @@
+//
+//  PrefixHeader.pch
+//  daycareParent
+//
+//  Created by Git on 2017/11/27.
+//  Copyright © 2017年 XueHui. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#pragma mark  DataRequest Method
+#pragma mark  LifeStyle Method
+#pragma mark  Getter/Setter Method
+#pragma mark  Delegate Method
+#pragma mark  Private Method
+#pragma mark  Response Method
+
+
+
+#pragma mark - 头文件
+
+
+#pragma mark - 三方框架
+#import "SDWebImage.h"
+#import "XHShowHUD.h"
+#import "AFNetworkingHelper.h"
+#import "MJRefresh.h"
+
+
+#pragma mark 分类
+#import "NSString+Category.h"
+#import "UIView+Frame.h"
+#import "NSObject+Category.h"
+#import "NSArray+Category.h"
+#import "NSUserDefaults+UserInfo.h"
+
+
+
+#pragma mark 类的头文件
+#import "MainRootControllerHelper.h"
+#import "BaseCollectionView.h"
+#import "BaseControl.h"
+
+
+
+
+
+
+#import "BaseViewController.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#pragma mark 接口地址位置
+
+
+
+#ifdef DEBUG
+
+
+
+# define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+
+
+
+#else
+
+
+# define DLog(...)
+
+#endif
+
+
+
+#define NTES_USE_CLEAR_BAR - (BOOL)useClearBar{return YES;}
+#define NTES_FORBID_INTERACTIVE_POP - (BOOL)forbidInteractivePop{return YES;}
+
+#define IOS8            ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 8.0)
+
+
+
+
+#define SuppressPerformSelectorLeakWarning(Stuff) \
+do { \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"") \
+Stuff; \
+_Pragma("clang diagnostic pop") \
+} while (0)
+
+
+#pragma mark - 常使用的宏定义
+#define kWindow [UIApplication sharedApplication].keyWindow
+#define KING_WINDOW [[UIApplication sharedApplication].windows lastObject]
+//主屏幕的大小
+#define WindowScreen [[UIScreen mainScreen] bounds]
+
+//设备屏幕尺寸
+#define SCREEN_HEIGHT   ([UIScreen mainScreen].bounds.size.height) //! 屏幕高度
+#define SCREEN_WIDTH    ([UIScreen mainScreen].bounds.size.width)   //!< 屏幕宽度
+//GCD
+#define dispatch_queue   dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+#define BACK(block) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), block)
+#define DISPATCH_GROUP(block) dispatch_group_async(group, dispatch_queue, block)
+#define MAIN(block) dispatch_async(dispatch_get_main_queue(),block)
+
+#define BACK_SPEAKINGING(block) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), block)
+
+//color
+#define RGB(r, g, b)  [UIColor colorWithRed:((r) / 255.0) green:((g) / 255.0) blue:((b) / 255.0) alpha:1.0]
+#define RGBAlpha(r, g, b, a)  [UIColor colorWithRed:((r) / 255.0) green:((g) / 255.0) blue:((b) / 255.0) alpha:(a)]
+
+#define kAppDelegate ((AppDelegate *)[UIApplication sharedApplication].delegate)
+
+#define kApplication [UIApplication sharedApplication]
+
+//灰色字体颜色
+#define TextGrayColor RGBAlpha(232.0, 232.0, 232.0, 1.0)
+
+
+//分割线背景颜色
+#define LineViewColor RGBAlpha(229, 229, 229, 1.0)
+#define TitleColor RGBAlpha(49.0, 49.0, 49.0, 1.0)
+#define TitleGrayColor RGBAlpha(142.0, 142.0, 142.0, 1.0)
+
+
+
+
+//项目的主题颜色（浅绿色）
+#define MainColor RGBAlpha(81,200,162,1.0)
+#define kHeaderColor RGB(127, 233, 199)
+#define kDefaultColor RGB(244, 244, 244)
+#pragma mark  项目中字体大小
+
+//项目的主题颜色（浅绿色）
+#define FontLevel0 [UIFont systemFontOfSize:22.0]  //!< 22.0
+#define FontLevel1 [UIFont systemFontOfSize:18.0]  //!< 18.0
+#define FontLevel2 [UIFont systemFontOfSize:16.0]  //!< 16.0
+#define FontLevel3 [UIFont systemFontOfSize:14.0]  //!< 14.0
+#define FontLevel4 [UIFont systemFontOfSize:12.0]  //!< 12.0
+#define FontLevel5 [UIFont systemFontOfSize:10.0]  //!< 10.0
+
+
+#pragma mark - 屏蔽NSLog(如果想屏蔽，并且)
+//#define NSLog(...) {};
+
+
+#pragma mark  程序的沙盒目录
+#define HomeDirectoryDocumentFilePath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)/*这是获取沙盒目录*/ objectAtIndex:0]
+
+
+#pragma mark  版本信息
+#define AppVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+#define KeyAppVersion @"AppVersion"
+#define hUMtypeVersion  @"typeVersion"
+#define IOSSystem [[[UIDevice currentDevice] systemVersion] floatValue]
+
+
+//获取导航栏+状态栏的高度
+#define getRectNavAndStatusHight  [[UIApplication sharedApplication] statusBarFrame].size.height
+
+
+
+#pragma mark 微信开发这账号
+/**
+ 微信账号开发者
+ （774183988@qq.com juntai606）
+ */
+#define WeiXinAppID @"wx8f5f64ddfa4c1b73"
+#define WeiXinAppSecret @"5c456f448c53c9a85dfd575183679455"
+
+#pragma mark QQ
+/**
+ 3191324497
+ li19881129
+ */
+#define QQAppID @"1106943699"
+#define QQAppKey @"P1CEdJh7Oy8uVeFb"
+
+#pragma mark 高德地图开发者账号
+/**
+ 高德地图开发者账号
+ 谢超私人账号（xiechaoandroid@163.com  926926)，公司项目不建议使用私人账号，后期维护会让你头疼
+ */
+#define AMAPKEY @"cb6e6d6dc40c86bd32dd283d0f64e58f"
+
+#pragma mark 声网开发者账号
+/**
+ https://www.agora.io/cn/
+ 45783697@qq.com
+ abc123456
+ 孙攀给的账号
+ */
+#define AgoraAppID @"356cb6c969ca462ea24fa5368d3f83ce"
+
+#pragma mark ShareUrl
+#define ShareUrl @"http://www.duchebaodian.com" //@"http://www.umeng.com/social"
+
+
+
+#define CellIdentifier @"CellIdentifier"
+#define HeaderSectionIdentifier @"HeaderSectionIdentifier"
+#define FooterSectionIdentifier @"FooterSectionIdentifier"
+
+#define DEFAULTCOLOR RGBAlpha(134, 134, 134, 1.0)//浅灰色字体
+
+
+#define  AutoLogin @"autoLogin"
+#define  kNSLog(...) NSLog(@"%@%s",__VA_ARGS__,__func__)
+#define   kFormat(...)  [NSString stringWithFormat:__VA_ARGS__]
+#define   kFont(...)   [UIFont systemFontOfSize:__VA_ARGS__]
+#define   kColor(...)    [UIColor __VA_ARGS__]
+#define   Kphone @"400-6778599"
+
+#define   kNetworkState @"networkState"
+
+#define kAddressId @"addressId"
+#define kDeleteAddressId @"deleteAddressId"
+#define kStudyRecordNotifice @"studyRecordNotifice"
+/*
+ *两种写法
+ */
+#define WeakObj(o) autoreleasepool{} __weak typeof(o) o##Weak = o;
+#define StrongObj(o) autoreleasepool{} __strong typeof(o) o = o##Weak;
+/**
+ *  Weaky self
+ */
+#define weakifySelf  \
+__weak __typeof(&*self)weakSelf = self;
+
+#define strongifySelf \
+__strong __typeof(&*weakSelf)self = weakSelf;
+/**
+ *  Color
+ */
+#define ColorWithRGBA(r, g, b, a) [UIColor colorWithRed:(r) / 255.0f green:(g) / 255.0f blue:(b) / 255.0f alpha:(a)]
+
+
+#define ALGetFileVedio(name) [NSString stringWithFormat:@"http://vedio.ixuehui.cn/vedio/%@",name]
+#define ALGetFileHeadThumbnail(name) [NSString stringWithFormat:@"http://img.ixuehui.cn/xh/%@@!100-100-ios-head",name]             //头像缩略
+#define ALGetFileImageThumbnail(name) [NSString stringWithFormat:@"http://img.ixuehui.cn/xh/%@@!160-160-ios-list-item",name]            //图片缩略
+#define ALGetFileImageOriginal(name) [NSString stringWithFormat:@"http://img.ixuehui.cn/xh/%@",name]            //原图
+
+#define ALGetkaoqinjiFileImageThumbnail(name) [NSString stringWithFormat:@"http://img.ixuehui.cn/att/%@@!160-160-ios-list-item",name]            //考勤机图片缩略
+#define ALGetkaoqinjiFileImageOriginal(name) [NSString stringWithFormat:@"http://img.ixuehui.cn/att/%@",name]            //考勤机原图
+#define CFBundleShortVersionString    [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+
+#define BundleIdentifier [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"]
+
+
+#pragma mark 提示语
+#define NetworkfFail @"网络错误，请重试！"
+
+#define OSSImageUploaderTreatyURL @"http://img.ixuehui.cn/xh/"
+#define OSSVedioUploaderTreatyURL @"http://vedio.ixuehui.cn/vedio/"
+
+
+
+
+#pragma mark - 订单购买支付参数 （购买设备的参数）
+#define CLIENT @"2"  //!< 1 为Android设备 2为IOS设备
+
+
+#define ShareK12 @"1个孩子1整套学习辅导方案，通过多维度测评，全面分析、了解孩子学习情况，挖掘每个孩子的潜在优势，提升学习效率。"
+//@"专注K12全学科在线互动教学服务"
+
+
+
+
+
+#pragma mark - 网易实时音视频白板功能
+
+
+#define UICommonTableBkgColor UIColorFromRGB(0xe4e7ec)
+#define SuppressPerformSelectorLeakWarning(Stuff) \
+do { \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"") \
+Stuff; \
+_Pragma("clang diagnostic pop") \
+} while (0)
+
+
+#pragma mark - UIColor宏定义
+#define UIColorFromRGBA(rgbValue, alphaValue) [UIColor \
+colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0x00FF00) >> 8))/255.0 \
+blue:((float)(rgbValue & 0x0000FF))/255.0 \
+alpha:alphaValue]
+
+
+
+#define UIColorFromRGB(rgbValue) UIColorFromRGBA(rgbValue, 1.0)
+
+
+
+
+#define NIMKit_UIScreenWidth   [UIScreen mainScreen].bounds.size.width
+#define NIMKit_UIScreenHeight  [UIScreen mainScreen].bounds.size.height
+
+
+#define SuppressPerformSelectorLeakWarning(Stuff) \
+do { \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"") \
+Stuff; \
+_Pragma("clang diagnostic pop") \
+} while (0)
+
+
+
+#define NTES_USE_CLEAR_BAR - (BOOL)useClearBar{return YES;}
+#define NTES_FORBID_INTERACTIVE_POP - (BOOL)forbidInteractivePop{return YES;}
+
+
+
+#define IOS8            ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 8.0)
+
+
+
+
+
+
+#endif /* PrefixHeader_pch */
